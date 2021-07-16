@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : LivingEntity
 {
     public CharacterController2D controller;
     public Animator anim;
@@ -13,9 +14,15 @@ public class PlayerMovement : MonoBehaviour
     bool jump = false;
     bool crouch = false;
 
+    [SerializeField]
+    Image healthBar;
+
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
+        base.Start();
+
+        healthBar.fillAmount = 1;
         anim = GetComponent<Animator>();
         controller = GetComponent<CharacterController2D>();
     }
@@ -42,6 +49,19 @@ public class PlayerMovement : MonoBehaviour
             crouch = false;
             OnCrouching(false);
         }
+    }
+
+    public override void TakeDamage(float damage)
+    {
+        base.TakeDamage(damage);
+
+        healthBar.fillAmount = GetCurrentHealth() / maxHealth;
+    }
+
+    public override void OnDeath()
+    {
+        base.OnDeath();
+        //Destroy(gameObject);
     }
 
     public void Onlanding()
