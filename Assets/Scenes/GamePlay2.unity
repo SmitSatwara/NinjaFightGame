@@ -2873,8 +2873,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 247705350}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -71.7, y: -6.7, z: 0}
-  m_LocalScale: {x: 100, y: 1, z: 1}
+  m_LocalPosition: {x: -102.46, y: -6.7, z: 0}
+  m_LocalScale: {x: 150, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -6392,6 +6392,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 714654709, guid: 34853ad98b20109499e0f37c9085c3f4, type: 3}
+      propertyPath: textCoin
+      value: 
+      objectReference: {fileID: 1277161640}
     - target: {fileID: 6221245627853921999, guid: 34853ad98b20109499e0f37c9085c3f4, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -7548,25 +7552,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &714654699 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6221245627853922036, guid: 34853ad98b20109499e0f37c9085c3f4, type: 3}
-  m_PrefabInstance: {fileID: 599630994}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &714654709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 714654699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 894776188b0553e46bcecd83e364d3c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinCollected: 0
-  textCoin: {fileID: 1277161640}
 --- !u!1 &716340848
 GameObject:
   m_ObjectHideFlags: 0

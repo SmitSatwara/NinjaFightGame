@@ -5,12 +5,18 @@ using UnityEngine;
 public class PlayerAttact : MonoBehaviour
 {
     public Animator anim;
-    public GameObject attackTrigger;
+
+    public LayerMask enemyMask;
+
+    [SerializeField]
+    CharacterController2D character;
+
+    public float rayDistance;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
-        attackTrigger.SetActive(false);
+        character = GetComponent<CharacterController2D>();
     }
 
     // Update is called once per frame
@@ -24,12 +30,17 @@ public class PlayerAttact : MonoBehaviour
 
     public void AttackAnim()
     {
-        attackTrigger.SetActive(true);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right * character.CheckFaceSide(), rayDistance, enemyMask);
+
+        if (hit)
+        {
+            Debug.Log("Player Attack");
+            hit.collider.gameObject.GetComponent<Enemy>().TakeDamage(20.0f);
+        }
     }
 
-    public void StopAttackAnim()
+    void StopAttack()
     {
         anim.SetBool("IsAttact", false);
-        attackTrigger.SetActive(false);
     }
 }

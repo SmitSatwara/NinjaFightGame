@@ -27,11 +27,11 @@ public class Enemy : LivingEntity
 
     public Rigidbody2D rb;
 
-    public GameObject attackTrigger;
-
     public LayerMask playerMask;
 
     public float rayDistance;
+
+    float dir;
 
     // Start is called before the first frame update
     public override void Start()
@@ -45,14 +45,12 @@ public class Enemy : LivingEntity
         currentState = State.Idle;
 
         rb = GetComponent<Rigidbody2D>();
-
-        attackTrigger.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        float dir = 0.0f;
+        dir = 0.0f;
         if(current == 0)
         {
             transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
@@ -110,18 +108,21 @@ public class Enemy : LivingEntity
 
     public void Attack()
     {
-        attackTrigger.SetActive(true);
-    }
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.right * dir, rayDistance, playerMask);
 
-    public void StopAttack()
-    {
-        attackTrigger.SetActive(false);
-     
-        anim.SetBool("IsAttack", false);
+        if (hit)
+        {
+            hit.collider.gameObject.GetComponent<PlayerMovement>().TakeDamage(20.0f);
+        }
     }
 
     void AttackPlayer()
     {
         anim.SetBool("IsAttack", true);
+    }
+
+    void StopAttack()
+    {
+        anim.SetBool("IsAttack", false);
     }
 }

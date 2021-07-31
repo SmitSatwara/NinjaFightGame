@@ -1,65 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1792305393
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1792305394}
-  - component: {fileID: 1792305395}
-  - component: {fileID: 5462683098703624804}
-  m_Layer: 0
-  m_Name: Attack
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1792305394
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1792305393}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.96, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6221245627853921999}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1792305395
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1792305393}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.3
---- !u!114 &5462683098703624804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1792305393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fd0752098a15dc47af44091916c2da3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6221245626316839140
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,6 +160,7 @@ GameObject:
   - component: {fileID: 6221245627853922037}
   - component: {fileID: 6221245627853921996}
   - component: {fileID: 6221245627853921997}
+  - component: {fileID: 714654709}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -241,7 +182,6 @@ Transform:
   - {fileID: 6221245626316839141}
   - {fileID: 6221245626464494679}
   - {fileID: 6221245626493687466}
-  - {fileID: 1792305394}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -314,7 +254,7 @@ MonoBehaviour:
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 183
+    m_Bits: 439
   m_GroundCheck: {fileID: 6221245626316839141}
   m_CeilingCheck: {fileID: 6221245626464494679}
   m_CrouchDisableCollider: {fileID: 0}
@@ -424,7 +364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 0
+  maxHealth: 500
   controller: {fileID: 0}
   anim: {fileID: 0}
   runSpeed: 40
@@ -462,4 +402,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
-  attackTrigger: {fileID: 1792305393}
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 256
+  character: {fileID: 0}
+  rayDistance: 1
+--- !u!114 &714654709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6221245627853922036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 894776188b0553e46bcecd83e364d3c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinCollected: 0
+  textCoin: {fileID: 0}

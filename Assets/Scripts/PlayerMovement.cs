@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : LivingEntity
 {
@@ -56,12 +57,19 @@ public class PlayerMovement : LivingEntity
         base.TakeDamage(damage);
 
         healthBar.fillAmount = GetCurrentHealth() / maxHealth;
+
+        if(GetCurrentHealth() <= 0.0f)
+        {
+            OnDeath();
+        }
     }
 
     public override void OnDeath()
     {
         base.OnDeath();
         //Destroy(gameObject);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Onlanding()

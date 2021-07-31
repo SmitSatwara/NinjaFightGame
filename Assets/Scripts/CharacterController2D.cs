@@ -144,4 +144,12 @@ public class CharacterController2D : MonoBehaviour
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+
+	public float CheckFaceSide()
+    {
+		if (m_FacingRight)
+			return 1.0f;
+		else
+			return -1.0f;
+    }
 }
