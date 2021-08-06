@@ -33,6 +33,8 @@ public class Enemy : LivingEntity
 
     float dir;
 
+    public AudioSource audioSource;
+
     // Start is called before the first frame update
     public override void Start()
     {
@@ -112,6 +114,7 @@ public class Enemy : LivingEntity
 
         if (hit)
         {
+            audioSource.Play();
             hit.collider.gameObject.GetComponent<PlayerMovement>().TakeDamage(20.0f);
         }
     }

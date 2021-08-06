@@ -9,6 +9,8 @@ public class FinishLevel : MonoBehaviour
 {
     public Animator anim;
 
+    public AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +23,8 @@ public class FinishLevel : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             anim.SetBool("SetFire", true);
+            audioSource.Play();
             StartCoroutine(Wait());
-            
         }
     }
     IEnumerator Wait()

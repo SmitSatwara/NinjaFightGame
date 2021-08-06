@@ -18,6 +18,9 @@ public class PlayerMovement : LivingEntity
     [SerializeField]
     Image healthBar;
 
+    public AudioSource jumpSFX;
+    public AudioSource moveSFX;
+
     // Start is called before the first frame update
     public override void Start()
     {
@@ -32,11 +35,14 @@ public class PlayerMovement : LivingEntity
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal")*runSpeed;
-        anim.SetFloat("Speed",Mathf.Abs(horizontalMove));
+
+        if(!jump)
+            anim.SetFloat("Speed",Mathf.Abs(horizontalMove));
 
         if (Input.GetKeyDown(KeyCode.W))
         {
              jump = true;
+            jumpSFX.Play();
             anim.SetBool("IsJumpping",true);
         }
 
@@ -83,6 +89,12 @@ public class PlayerMovement : LivingEntity
     private void FixedUpdate()
     {
         controller.Move(horizontalMove*Time.fixedDeltaTime, crouch, jump);
+        
         jump = false;
+    }
+
+    public void PlayMoveSound()
+    {
+        moveSFX.Play();
     }
 }

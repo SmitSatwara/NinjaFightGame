@@ -12,6 +12,8 @@ public class PlayerAttact : MonoBehaviour
     CharacterController2D character;
 
     public float rayDistance;
+
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +37,7 @@ public class PlayerAttact : MonoBehaviour
         if (hit)
         {
             Debug.Log("Player Attack");
+            audioSource.Play();
             hit.collider.gameObject.GetComponent<Enemy>().TakeDamage(20.0f);
         }
     }
